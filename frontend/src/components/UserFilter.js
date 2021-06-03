@@ -16,7 +16,7 @@ export function UserFilter() {
         <Row>
             <Col className="d-flex justify-content-between">
                 <InputGroup className="d-flex align-items-center">
-                    <InputGroupAddon>
+                    <InputGroupAddon aria-required="false">
                         <InputGroupText className="h-100">
                             <FontAwesomeIcon size={"lg"} icon={faSearch} />
                         </InputGroupText>
@@ -24,8 +24,8 @@ export function UserFilter() {
                     <Input
                         placeholder="Search Users..."
                         type="text"
-                        // value={userFilter}
-                        // onChange={(e) => setUserFilter(e.target.value)}
+                        value={''}
+                        onChange={(e) => console.log(e.target.value)}
                     ></Input>
                 </InputGroup>
                 <Button
