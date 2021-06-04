@@ -11,7 +11,7 @@ export function UserListItem(props) {
     useEffect(() => {
         setTempUserObj(props.userObj);
         setEditUserToggle(false);
-    }, [props.userObj])
+    }, [props.userObj]);
 
     return (
         <ListGroupItem className="mt-1 rounded d-flex justify-content-between align-items-center">
@@ -37,7 +37,10 @@ export function UserListItem(props) {
                             onClick={() => props.handleDeleteUser(tempUserObj.id)}
                         />
                         <FontAwesomeIcon
-                            onClick={() => props.handleEditUser(tempUserObj)}
+                            onClick={() => {
+                                props.handleEditUser(tempUserObj);
+                                setEditUserToggle(false);
+                            }}
                             className="icon colorGreen"
                             size={"lg"}
                             icon={faSave}
@@ -50,13 +53,12 @@ export function UserListItem(props) {
                         <div className="d-flex flex-xs-column">
                             <img
                                 className="avatarIcon"
-                                src={tempUserObj.avatar}
+                                src={tempUserObj.avatar.length === 0 ? 'https://i.pravatar.cc/150?img=3' : tempUserObj.avatar}
                                 alt="User Icon"
                             />
                             <div>
                                 <h5>
-                                    {tempUserObj.first_name}
-                                    {tempUserObj.last_name}
+                                    {tempUserObj.first_name} {tempUserObj.last_name}
                                 </h5>
                                 <h6 className="font-weight-light">
                                     {tempUserObj.email}
